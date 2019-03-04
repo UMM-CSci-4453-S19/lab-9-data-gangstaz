@@ -22,7 +22,7 @@ app.get("/buttons",function(req,res){
 
 app.get("/click",function(req,res){
   var id = req.param('id');
-  var sql = 'YOUR SQL HERE';
+  var sql = 'select * from dataGangstas.till_buttons';
   console.log("Attempting sql ->"+sql+"<-");
 
   connection.query(sql,(function(res){return function(err,rows,fields){
