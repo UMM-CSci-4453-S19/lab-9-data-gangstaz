@@ -4,7 +4,7 @@ DBF=require('./dbf-setup.js');
 
 
 var getButtons=function(){//Returns a promise that contains the buttons as a result of a sql query
-    var sql = "select * from dataGangstas.till_buttons";
+    var sql = "select * from dataGangstas.invPrices";
     return DBF.query(mysql.format(sql)); //Return a promise
 };
 

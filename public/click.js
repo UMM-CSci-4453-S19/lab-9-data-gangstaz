@@ -9,7 +9,7 @@ function ButtonCtrl($scope,buttonApi){
    $scope.isLoading=isLoading;
    $scope.refreshButtons=refreshButtons;
    $scope.buttonClick=buttonClick;
-    
+
    $scope.transactions = [];
 
    var loading = false;
