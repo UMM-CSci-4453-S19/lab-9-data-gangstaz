@@ -18,8 +18,8 @@
 
         <div>
             <h2 style="padding-top: 200px">List </h2>
-            <h4>Running Total: {{sum}}</h4>
-            <li ng-repeat="item in transactions">{{item.item}} {{item.price}}</li>
+            <h4>Running Total: {{sum.toFixed(2)}}</h4>
+            <li ng-repeat="item in transactions">{{item.item}} {{item.price}} <button ng-click="console.log($scope.transactions); deleteClick(item, $index);" style="background-color: red">X</button></li>
         </div>
        <div style="position:fixed;height:50px;bottom:0px;left:0px;right:0px;margin-bottom:0px"} ng-show="errorMessage != ''">
           <div class="col-sm-12">
