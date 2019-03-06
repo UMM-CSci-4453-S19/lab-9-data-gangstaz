@@ -15,9 +15,11 @@
        <div ng-repeat="button in buttons">
          <div style="position:absolute;left:{{button.positionLeft}}px;top:{{button.top}}px"><button id="{{button.buttonID}}" ng-click="buttonClick($event,'button.buttonID');" >{{button.label}}</button></div>
        </div>
+
         <div>
-            <h2 style="padding-top: 200px">List</h2>
-            <li ng-repeat="item in transactions">{{item}}</li>
+            <h2 style="padding-top: 200px">List </h2>
+            <h4>Running Total: {{sum}}</h4>
+            <li ng-repeat="item in transactions">{{item.item}} {{item.price}}</li>
         </div>
        <div style="position:fixed;height:50px;bottom:0px;left:0px;right:0px;margin-bottom:0px"} ng-show="errorMessage != ''">
           <div class="col-sm-12">

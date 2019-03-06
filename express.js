@@ -22,13 +22,16 @@ app.get("/buttons",function(req,res){
 
 app.get("/click",function(req,res){
   var id = req.param('id');
-  var sql = 'select * from dataGangstas.till_buttons';
+  var sql = 'select price, item from dataGangstas.invPrices where id=' + id;
   console.log("Attempting sql ->"+sql+"<-");
 
   connection.query(sql,(function(res){return function(err,rows,fields){
-     if(err){console.log("We have an insertion error:");
-             console.log(err);}
-     res.send(err); // Let the upstream guy know how it went
+     if(err) {
+         console.log("We have an insertion error:");
+         console.log(err);
+         res.send(err); // Let the upstream guy know how it went
+     }
+     else {res.send(rows);}
   }})(res));
 });
 // Your other API handlers go here!
