@@ -9,6 +9,10 @@ function ButtonCtrl($scope,buttonApi){
    $scope.isLoading=isLoading;
    $scope.refreshButtons=refreshButtons;
    $scope.buttonClick=buttonClick;
+   $scope.deleteClick=deleteClick;
+   $scope.sum = 0;
+
+   $scope.transactions = [];
 
    var loading = false;
 
@@ -31,11 +35,20 @@ function ButtonCtrl($scope,buttonApi){
   function buttonClick($event){
      $scope.errorMessage='';
      buttonApi.clickButton($event.target.id)
-        .success(function(){})
+        .success(function(item){
+            $scope.sum += item[0].price;
+            $scope.transactions.push(item[0]);})
         .error(function(){$scope.errorMessage="Unable click";});
   }
-  refreshButtons();  //make sure the buttons are loaded
 
+  function deleteClick(item, index) {
+      // update the running total
+      $scope.sum -= item.price;
+      // remove the item from the transaction array
+      $scope.transactions.splice(index,1);
+  }
+
+  refreshButtons();  //make sure the buttons are loaded
 }
 
 function buttonApi($http,apiUrl){
