@@ -22,6 +22,7 @@ app.get("/buttons",function(req,res){
 
 app.get("/click",function(req,res){
   var id = req.param('id');
+  // insert into dataGangstas.currTrans (price, item) select price, item from dataGangstas.invPrices where id=' + id + ';
   var sql = 'select price, item from dataGangstas.invPrices where id=' + id;
   console.log("Attempting sql ->"+sql+"<-");
 
