@@ -10,6 +10,7 @@ function ButtonCtrl($scope,buttonApi){
    $scope.refreshButtons=refreshButtons;
    $scope.buttonClick=buttonClick;
    $scope.deleteClick=deleteClick;
+   $scope.voidClick=voidClick;
    $scope.sum = 0;
    $scope.idCounter = 0;
 
@@ -45,6 +46,13 @@ function ButtonCtrl($scope,buttonApi){
         .error(function(){$scope.errorMessage="Unable click";});
   }
 
+
+
+
+
+  ///// NOTE... trunate table on new sale, but if current transaction crashes... that way we can pick up where we left off
+    /// on the failed transcation.
+    
   function deleteClick(item, index) {
       buttonApi.delButton(item.transId)
           .success(function(err) {
@@ -54,6 +62,20 @@ function ButtonCtrl($scope,buttonApi){
               $scope.transactions.splice(index, 1);
           })
           .error(function(){$scope.errorMessage="Unable to delete";});
+  }
+
+  function voidClick() {
+      buttonApi.voidButton()
+          .success(function(err) {
+              console.log("Got here");
+              $scope.transactions =[];
+              console.log($scope.transactions);
+              $scope.sum = 0;
+              console.log($scope.sum);
+              $scope.idCounter = 0;
+              console.log()
+          })
+          .error(function(){$scope.errorMessage="Void failed"});
   }
 
   refreshButtons();  //make sure the buttons are loaded
@@ -72,6 +94,10 @@ function buttonApi($http,apiUrl){
     },
     delButton: function(id) {
         var url = apiUrl + '/delete?id='+ id;
+        return $http.get(url);
+    },
+    voidButton: function() {
+        var url = apiUrl + '/void';
         return $http.get(url);
     }
  };

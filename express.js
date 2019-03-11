@@ -50,6 +50,18 @@ app.get("/delete", function(req, res) {
     }})(res));
 })
 
+app.get("/void", function(req, res) {
+    var sql = 'TRUNCATE TABLE dataGangstas.currTrans';
+
+    connection.query(sql, (function(res) {return function(err,rows,fields) {
+        if (err) {
+            console.log(err);
+            res.send(err);
+        }
+        else {res.send(rows)}
+    }})(res))
+})
+
 app.listen(port);
 
 
