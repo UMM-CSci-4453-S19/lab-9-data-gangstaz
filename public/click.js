@@ -11,6 +11,7 @@ function ButtonCtrl($scope,buttonApi){
    $scope.buttonClick=buttonClick;
    $scope.deleteClick=deleteClick;
    $scope.sum = 0;
+   $scope.idCounter = 0;
 
    $scope.transactions = [];
 
@@ -36,16 +37,23 @@ function ButtonCtrl($scope,buttonApi){
      $scope.errorMessage='';
      buttonApi.clickButton($event.target.id)
         .success(function(item){
+            $scope.idCounter ++;
             $scope.sum += item[0][0].price;
-            $scope.transactions.push(item[0][0]);})
+            item[0][0].transId = $scope.idCounter;
+            $scope.transactions.push(item[0][0]);
+        })
         .error(function(){$scope.errorMessage="Unable click";});
   }
 
   function deleteClick(item, index) {
-      // update the running total
-      $scope.sum -= item.price;
-      // remove the item from the transaction array
-      $scope.transactions.splice(index,1);
+      buttonApi.delButton(item.transId)
+          .success(function(err) {
+              // update the running total
+              $scope.sum -= item.price;
+              // remove the item from the transaction array
+              $scope.transactions.splice(index, 1);
+          })
+          .error(function(){$scope.errorMessage="Unable to delete";});
   }
 
   refreshButtons();  //make sure the buttons are loaded
@@ -61,6 +69,10 @@ function buttonApi($http,apiUrl){
       var url = apiUrl+'/click?id='+id;
 //      console.log("Attempting with "+url);
       return $http.get(url); // Easy enough to do this way
+    },
+    delButton: function(id) {
+        var url = apiUrl + '/delete?id='+ id;
+        return $http.get(url);
     }
  };
 }

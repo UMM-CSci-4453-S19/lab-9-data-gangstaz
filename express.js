@@ -22,9 +22,6 @@ app.get("/buttons",function(req,res){
 
 app.get("/click",function(req,res){
   var id = req.param('id');
-  // insert into dataGangstas.currTrans (price, item) select price, item from dataGangstas.invPrices where id=' + id + ';
-    // 'select price, item from dataGangstas.invPrices where id=' + id
-    // 'Call dataGangstas.addItemToCurrTrans(' + id + ')'
   var sql = 'Call dataGangstas.addItemToCurrTrans(' + id + ')';
   console.log("Attempting sql ->"+sql+"<-");
 
@@ -39,4 +36,20 @@ app.get("/click",function(req,res){
 });
 // Your other API handlers go here!
 
+app.get("/delete", function(req, res) {
+    var id = req.param('id');
+    var sql = 'DELETE FROM dataGangstas.currTrans where id=' + id;
+
+    connection.query(sql,(function(res){return function(err,rows,fields) {
+    if (err) {
+        console.log(err);
+        console.log("We had an error deleting from currTrans")
+        res.send(err);
+    }
+    else {res.send(rows)}
+    }})(res));
+})
+
 app.listen(port);
+
+
