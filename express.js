@@ -23,7 +23,9 @@ app.get("/buttons",function(req,res){
 app.get("/click",function(req,res){
   var id = req.param('id');
   // insert into dataGangstas.currTrans (price, item) select price, item from dataGangstas.invPrices where id=' + id + ';
-  var sql = 'select price, item from dataGangstas.invPrices where id=' + id;
+    // 'select price, item from dataGangstas.invPrices where id=' + id
+    // 'Call dataGangstas.addItemToCurrTrans(' + id + ')'
+  var sql = 'Call dataGangstas.addItemToCurrTrans(' + id + ')';
   console.log("Attempting sql ->"+sql+"<-");
 
   connection.query(sql,(function(res){return function(err,rows,fields){

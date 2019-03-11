@@ -36,8 +36,8 @@ function ButtonCtrl($scope,buttonApi){
      $scope.errorMessage='';
      buttonApi.clickButton($event.target.id)
         .success(function(item){
-            $scope.sum += item[0].price;
-            $scope.transactions.push(item[0]);})
+            $scope.sum += item[0][0].price;
+            $scope.transactions.push(item[0][0]);})
         .error(function(){$scope.errorMessage="Unable click";});
   }
 
