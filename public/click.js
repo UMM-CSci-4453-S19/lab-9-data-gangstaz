@@ -11,6 +11,7 @@ function ButtonCtrl($scope,buttonApi){
    $scope.buttonClick=buttonClick;
    $scope.deleteClick=deleteClick;
    $scope.voidClick=voidClick;
+   $scope.saleClick=saleClick;
    $scope.sum = 0;
    $scope.idCounter = 0;
 
@@ -67,7 +68,6 @@ function ButtonCtrl($scope,buttonApi){
   function voidClick() {
       buttonApi.voidButton()
           .success(function(err) {
-              console.log("Got here");
               $scope.transactions =[];
               console.log($scope.transactions);
               $scope.sum = 0;
@@ -76,6 +76,19 @@ function ButtonCtrl($scope,buttonApi){
               console.log()
           })
           .error(function(){$scope.errorMessage="Void failed"});
+  }
+
+  function saleClick() {
+      buttonApi.saleButton()
+          .success(function(err) {
+              $scope.transactions =[];
+              console.log($scope.transactions);
+              $scope.sum = 0;
+              console.log($scope.sum);
+              $scope.idCounter = 0;
+              console.log()
+          })
+          .error(function(){$scope.errorMessage="Sale failed"});
   }
 
   refreshButtons();  //make sure the buttons are loaded
@@ -98,6 +111,10 @@ function buttonApi($http,apiUrl){
     },
     voidButton: function() {
         var url = apiUrl + '/void';
+        return $http.get(url);
+    },
+    saleButton: function() {
+        var url = apiUrl + '/sale';
         return $http.get(url);
     }
  };

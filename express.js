@@ -48,7 +48,7 @@ app.get("/delete", function(req, res) {
     }
     else {res.send(rows)}
     }})(res));
-})
+});
 
 app.get("/void", function(req, res) {
     var sql = 'TRUNCATE TABLE dataGangstas.currTrans';
@@ -60,7 +60,19 @@ app.get("/void", function(req, res) {
         }
         else {res.send(rows)}
     }})(res))
-})
+});
+
+app.get("/sale", function(req, res) {
+    var sql = 'CALL dataGangstas.sale()';
+
+    connection.query(sql, (function(res) {return function(err,rows,fields) {
+        if (err) {
+            console.log(err);
+            res.send(err);
+        }
+        else {res.send(rows)}
+    }})(res))
+});
 
 app.listen(port);
 
