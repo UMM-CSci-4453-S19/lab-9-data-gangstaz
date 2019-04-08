@@ -42,6 +42,7 @@ function ButtonCtrl($scope,buttonApi){
      buttonApi.clickButton($event.target.id)
         .success(function(item){
             $scope.idCounter ++;
+            console.log(item);
             $scope.sum += item[0][0].price;
             item[0][0].transId = $scope.idCounter;
             $scope.transactions.push(item[0][0]);
@@ -81,7 +82,7 @@ function ButtonCtrl($scope,buttonApi){
   }
 
   function saleClick() {
-      buttonApi.saleButton()
+      buttonApi.saleButton($scope.userName)
           .success(function(err) {
               $scope.transactions =[];
               $scope.sum = 0;
@@ -112,8 +113,8 @@ function buttonApi($http,apiUrl){
         var url = apiUrl + '/void';
         return $http.get(url);
     },
-    saleButton: function() {
-        var url = apiUrl + '/sale';
+    saleButton: function(userName) {
+        var url = apiUrl + '/sale?userName='+userName;
         return $http.get(url);
     }
  };

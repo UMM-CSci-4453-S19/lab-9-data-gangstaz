@@ -63,7 +63,8 @@ app.get("/void", function(req, res) {
 });
 
 app.get("/sale", function(req, res) {
-    var sql = 'CALL dataGangstas.sale()';
+    var user = req.param('userName');
+    var sql = 'CALL dataGangstas.sale(\'' + user + '\')';
 
     connection.query(sql, (function(res) {return function(err,rows,fields) {
         if (err) {
