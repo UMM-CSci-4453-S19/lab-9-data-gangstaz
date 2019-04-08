@@ -9,7 +9,7 @@
 </head>
 
 <body ng-app="buttons">
-<div class="container-fluid">
+<div ng-show="loggedIn" class="container-fluid">
     <h1>Cash Register (with buttons)</h1>
     <div id="buttons" ng-controller="buttonCtrl" >
        <div ng-repeat="button in buttons">
@@ -35,6 +35,19 @@
      </div>
 </div>
 
+<br>
+<br>
+<div ng-show="loggedIn" style="margin-left: 1rem">
+    <h1>Log Out</h1>
+    <h3>Hello, {{userName}}, would you like to log out?</h3>
+    <button ng-click="loggedIn=false; console.log(loggedIn);" style="background-color: lightblue">Logout</button>
+</div>
+
+<div ng-hide="loggedIn" style="margin-left: 1rem">
+    <h1>User Login</h1>
+    <input type="text" ng-model="userName">
+    <button ng-click="loggedIn=true; console.log(loggedIn);" style="background-color: lightblue">Login</button>
+</div>
 
 </body>
 

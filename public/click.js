@@ -14,6 +14,8 @@ function ButtonCtrl($scope,buttonApi){
    $scope.saleClick=saleClick;
    $scope.sum = 0;
    $scope.idCounter = 0;
+   $scope.loggedIn = false;
+   $scope.startTime;
 
    $scope.transactions = [];
 
@@ -73,7 +75,7 @@ function ButtonCtrl($scope,buttonApi){
               $scope.sum = 0;
               console.log($scope.sum);
               $scope.idCounter = 0;
-              console.log()
+              console.log($scope.userName);
           })
           .error(function(){$scope.errorMessage="Void failed"});
   }
@@ -82,11 +84,8 @@ function ButtonCtrl($scope,buttonApi){
       buttonApi.saleButton()
           .success(function(err) {
               $scope.transactions =[];
-              console.log($scope.transactions);
               $scope.sum = 0;
-              console.log($scope.sum);
               $scope.idCounter = 0;
-              console.log()
           })
           .error(function(){$scope.errorMessage="Sale failed"});
   }
