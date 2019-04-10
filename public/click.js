@@ -69,6 +69,7 @@ function ButtonCtrl($scope,buttonApi){
   }
 
   function voidClick() {
+      console.log($scope.transactions);
       buttonApi.voidButton()
           .success(function(err) {
               $scope.transactions =[];
@@ -80,6 +81,26 @@ function ButtonCtrl($scope,buttonApi){
   }
 
   function saleClick() {
+
+      // This section outlines how the receipt is created.
+
+      var receiptString  = "";
+      var total = 0;
+      receiptString += ( new Date().toLocaleString() ) + "\n";
+      receiptString += "RECEIPT... THANK YOU FOR SHOPPING! \n";
+      receiptString += "YOUR CASHIER TODAY WAS " + $scope.userName + "." + "\n";
+      $scope.transactions.forEach( function(element) {
+          receiptString += element.item + " " + "$" + element.price;
+          receiptString += "\n";
+          total += element.price;
+          })
+      receiptString += "---------------------------" + "\n";
+      receiptString += "Total: " + "$" + total;
+
+      alert(receiptString);
+
+      // end of receipt creation
+
       buttonApi.saleButton($scope.userName)
           .success(function(err) {
               $scope.transactions =[];
