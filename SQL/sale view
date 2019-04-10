@@ -1,0 +1,8 @@
+select transId, sum(price) as total, min(timeStamp) as startTime, max(timeStamp) as stopTime,
+timeDiff(max(timeStamp), min(timestamp)) as duration, user from transArchive group by transId;
+
+## stopTime currently grabs the timestamp from last item entered into system,
+not when the sale was actually completed/ended.
+
+
+
