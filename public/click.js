@@ -72,9 +72,7 @@ function ButtonCtrl($scope,buttonApi){
       buttonApi.voidButton()
           .success(function(err) {
               $scope.transactions =[];
-              console.log($scope.transactions);
               $scope.sum = 0;
-              console.log($scope.sum);
               $scope.idCounter = 0;
               console.log($scope.userName);
           })
