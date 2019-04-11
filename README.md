@@ -34,3 +34,24 @@ Now it is it time to finish off this register project.  As you implement the fun
    * Add javascript to your HTML template that pops up a suitable "receipt"
 * Finally, you should expand your API document into a complete user manual (preferably with a few screen shots).  Make the API details into an appendix at the end.  (Don't go crazy on this step... but don't just gloss over it either...)
 
+# API Documentation
+
+**Get Buttons**
+---
+  Returns JSON object with current buttons that are found in the table till_buttons
+* **URL**
+
+  /buttons
+
+* **Method:**
+
+  `GET`
+
+* **Sample Call:**
+
+  ```javascript
+    getButtons: function(apiUrl){
+      var url = apiUrl + '/buttons';
+      return $http.get(url);
+    }
+  ```
