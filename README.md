@@ -55,3 +55,28 @@ Now it is it time to finish off this register project.  As you implement the fun
       return $http.get(url);
     }
   ```
+  
+**Delete**
+----
+
+* **URL**
+
+  /delete
+
+* **Method:**
+
+  `DELETE`
+  
+*  **URL Params**
+
+   **Required:**
+ 
+   `id=[integer]`
+
+* **Sample Call:**
+
+      delButton: function(id) {
+          var url = apiUrl + '/delete?id='+ id;
+          return $http.get(url);
+      },
+  
