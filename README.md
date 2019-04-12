@@ -131,6 +131,12 @@ Now it is it time to finish off this register project.  As you implement the fun
   * **Method:**
 
     `GET`
+    
+  * **URL Params**
+  
+    **Required:**
+    
+    `id=[integer]`
 
   * **Sample Call:**
     ```javascript
