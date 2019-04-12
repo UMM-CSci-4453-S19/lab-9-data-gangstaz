@@ -100,7 +100,7 @@ Now it is it time to finish off this register project.  As you implement the fun
 
 * **URL**
 
-  /delete?id=
+  /delete?id=<itemId>
 
 * **Method:**
 
@@ -113,9 +113,10 @@ Now it is it time to finish off this register project.  As you implement the fun
    `id=[integer]`
 
 * **Sample Call:**
-
-      delButton: function(id) {
-          var url = apiUrl + '/delete?id='+ id;
-          return $http.get(url);
-      },
+  ```javascript
+    delButton: function(id) {
+        var url = apiUrl + '/delete?id='+ id;
+        return $http.get(url);
+    }
+  ```
   
