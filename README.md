@@ -58,7 +58,7 @@ Now it is it time to finish off this register project.  As you implement the fun
   
 **Void**
 ---
-  Voids the current transaction and removes all items from the list and the table currTrans
+  Voids the current transaction and removes all items from the list
 * **URL**
 
   /void
@@ -74,23 +74,24 @@ Now it is it time to finish off this register project.  As you implement the fun
       return $http.get(url);
     }
   ```
- 
-**Click**
+  
+  **Sale**
 ---
-  Adds the item that was clicked on to the transaction
-  * **URL**
+  Marks the current transaction as a completed sale. Removes items from the client side list, clears the current tranasction table ("currTrans" in the database) and also enters the finished transaction into the transArchive table.
   
-    /click?id=<itemId>
-  
-  * **Method:**
-    
-    `GET`
-    
-  * **Sample Call:**
-    ```javascript
-    clickButton: function(id){
-      var url = apiUrl+'/click?id='+id;
-      return $http.get(url); // Easy enough to do this way
+* **URL**
+
+  /sale
+
+* **Method:**
+
+  `GET`
+
+* **Sample Call:**
+  ```javascript
+    saleButton: function(apiUrl){
+      var url = apiUrl + '/sale';
+      return $http.get(url);
     }
-    ```
+  ```
 
