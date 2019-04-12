@@ -75,7 +75,7 @@ Now it is it time to finish off this register project.  As you implement the fun
     }
   ```
   
-  **Sale**
+ * **Sale**
 ---
   Marks the current transaction as a completed sale. Removes items from the client side list, clears the current tranasction table ("currTrans" in the database) and also enters the finished transaction into the transArchive table.
   
