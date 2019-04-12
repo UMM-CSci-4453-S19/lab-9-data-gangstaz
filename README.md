@@ -55,3 +55,23 @@ Now it is it time to finish off this register project.  As you implement the fun
       return $http.get(url);
     }
   ```
+  
+  **Void**
+  ---
+    Voids the current transaction and removes all items from the list
+  * **URL**
+  
+    /void
+  
+  * **Method:**
+  
+    `GET`
+    
+  * **Sample Call:**
+    ```javascript
+      voidButton: function(apiUrl){
+        var url = apiUrl + '/void';
+        return $http.get(url);
+      }
+    ```
+  
