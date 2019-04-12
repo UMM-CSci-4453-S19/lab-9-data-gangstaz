@@ -149,19 +149,24 @@ Now it is it time to finish off this register project.  As you implement the fun
 # Screenshots
 
 Screen upon login. Can type in whatever. 
-![Login Screen](/screenshots/login.png)
 
+![Login Screen](/screenshots/login.png)
+----
 Recognizes username. Has buttons to add items to register. Has empty register. 
 Logout button logs the user out. 
+
 ![Screen upon login](/screenshots/uponLogin.png)
-
+----
 Result of clicking on the "apple" button. It is added to the list, and the running total is added to.
+
 ![Click on item](/screenshots/clickOnItem.png)
-
+----
 Clicking the red X from any of the entries would remove the item from the list and decrease the running total. Clicking "VOID" deletes all entries. 
-![Delete item](/screenshots/deleteItem.png)
 
+![Delete item](/screenshots/deleteItem.png)
+----
 Popup that summarizes the transaction from the list once "SALE" has been clicked.
+
 ![Sale](/screenshots/sale.png)
 
 
