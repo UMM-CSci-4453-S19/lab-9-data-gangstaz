@@ -56,6 +56,45 @@ Now it is it time to finish off this register project.  As you implement the fun
     }
   ```
   
+**Void**
+---
+  Voids the current transaction and removes all items from the list and the table currTrans
+* **URL**
+
+  /void
+
+* **Method:**
+
+  `GET`
+
+* **Sample Call:**
+  ```javascript
+    voidButton: function(apiUrl){
+      var url = apiUrl + '/void';
+      return $http.get(url);
+    }
+  ```
+ 
+**Click**
+---
+  Adds the item that was clicked on to the transaction
+  * **URL**
+  
+    /click?id=<itemId>
+  
+  * **Method:**
+    
+    `GET`
+    
+  * **Sample Call:**
+    ```javascript
+    clickButton: function(id){
+      var url = apiUrl+'/click?id='+id;
+      return $http.get(url); // Easy enough to do this way
+    }
+    ```
+
+  
 **Delete**
 ----
 
